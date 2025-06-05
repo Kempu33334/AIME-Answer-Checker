@@ -28,16 +28,23 @@ void checkAnswer(int problemNumber, const string &userAnswer, const vector<strin
         return;
     }
 
-    if (userAnswer == answers[problemNumber - 1]) {
-        cout << "Correct!" << endl;
-    } else {
-        cout << "Incorrect. Try again." << endl;
+    if userAnswer == "GIVE UP" {
+        cout << "The answer was " << answers[problemNumber - 1] << endl;
+    }
+    else {
+        if (userAnswer == answers[problemNumber - 1]) {
+            cout << "Correct!" << endl;
+        } 
+        else {
+            cout << "Incorrect. Try again." << endl;
+        }
     }
 }
 
 int main() {
     string contestYear;
     string contest1or2;
+    cout << "At any point, if you give up, type \"GIVE UP\" instead of an answer." << endl;
     cout << "Type the year you are checking: ";
     cin >> contestYear;
     cout << "Type the type of contest (AIME I or II) by typing 1 or 2: ";
