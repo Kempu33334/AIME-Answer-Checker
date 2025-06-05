@@ -28,8 +28,8 @@ void checkAnswer(int problemNumber, const string &userAnswer, const vector<strin
         return;
     }
 
-    if userAnswer == "GIVE UP" {
-        cout << "The answer was " << answers[problemNumber - 1] << endl;
+    if (userAnswer == "GIVE UP") {
+        cout << "The answer was " << answers[problemNumber - 1] << "." << endl;
     }
     else {
         if (userAnswer == answers[problemNumber - 1]) {
@@ -49,7 +49,7 @@ int main() {
     cin >> contestYear;
     cout << "Type the type of contest (AIME I or II) by typing 1 or 2: ";
     cin >> contest1or2;
-    string answerFile = contestYear+"_"+contest1or2+".txt";  // File containing the correct answers
+    string answerFile = "AnswerFiles/"+contestYear+"_"+contest1or2+".txt";  // File containing the correct answers
     vector<string> answers = loadAnswers(answerFile);
     string userAnswer;
 
@@ -62,7 +62,10 @@ int main() {
         }
 
         cout << "Enter your answer: ";
-        cin >> userAnswer;
+
+        cin.ignore();
+        getline(cin, userAnswer);
+
         if ((contestYear == "2022" && contest1or2 == "2") && (problemNumber==8)) {
             if (userAnswer == "081" || userAnswer == "080") {
                 cout << "Correct!" << endl;
